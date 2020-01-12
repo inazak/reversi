@@ -19,7 +19,13 @@ func NewRandomPlayer() RandomPlayer {
 }
 
 func (r RandomPlayer) Play(g game.Game) (p point.Point, pass, giveup bool) {
+  time.Sleep(time.Second * 1)
   ps := g.GetPuttablePoint(g.GetTurn())
+
+  if len(ps) == 0 {
+    return point.Point{ X:-1, Y:-1}, true, false //pass
+  }
+
   p   = ps[ rand.Intn(len(ps)) ]
   return p, false, false
 }
