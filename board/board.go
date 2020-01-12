@@ -50,7 +50,7 @@ func (b *Board) Valid(p point.Point) bool {
 
 func (b *Board) Flippable(p point.Point, d point.Direction, s stone.Stone) bool {
   if q := p.Move(d); b.Valid(q) && s.Flip() == b.GetStone(q) {
-    for q = q.Move(d); b.Valid(q); q = q.Move(d) {
+    for q = q.Move(d); b.Valid(q) && stone.None != b.GetStone(q); q = q.Move(d) {
       if s == b.GetStone(q) {
         return true
       }
@@ -83,7 +83,7 @@ func (b *Board) PutStone(p point.Point, s stone.Stone) {
   var d point.Direction
   for d=0; d<point.Directions; d++ {
     if b.Flippable(p, d, s) {
-      for q := p.Move(d); b.Valid(q); q = q.Move(d) {
+      for q := p.Move(d); b.Valid(q) && stone.None != b.GetStone(q) ; q = q.Move(d) {
         if s == b.GetStone(q) {
           break
         } else {
