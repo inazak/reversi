@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-  game := game.NewGame8x8()
+  game := game.NewGame6x6()
   ctrl := ui.NewCUIController()
   plyb := player.NewHumanPlayer(ctrl)
   plyw := player.NewRandomPlayer()
