@@ -53,9 +53,20 @@ func (g *Game8x8) Puttable(p point.Point, s stone.Stone) bool {
   return g.board.Puttable(p, s)
 }
 
-func (g *Game8x8) Gameset() bool {
-  return len(g.board.GetPuttablePoint(stone.Black)) == 0 &&
-         len(g.board.GetPuttablePoint(stone.White)) == 0
+func (g *Game8x8) Gameset() (bool, stone.Stone) {
+  bp := g.board.GetPuttablePoint(stone.Black)
+  wp := g.board.GetPuttablePoint(stone.Black)
+  if len(bp) == 0 && len(wp) == 0 {
+    bc := g.board.CountStone(stone.Black)
+    wc := g.board.CountStone(stone.White)
+    if bc > wc {
+      return true, stone.Black
+    } else {
+      return true, stone.White
+    }
+  } else {
+    return false, stone.None
+  }
 }
 
 

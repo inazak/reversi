@@ -25,8 +25,8 @@ func (s Session) Start() {
 
   for {
 
-    if s.game.Gameset() {
-      s.ctrl.Gameset(s.game.Copy())
+    if ok, winner := s.game.Gameset(); ok {
+      s.ctrl.Gameset(s.game.Copy(), winner)
       break
     }
 
@@ -43,6 +43,8 @@ func (s Session) Start() {
 
     if pass {
       s.ctrl.Pass(s.game.Copy())
+      s.game.FlipTurn() // turn change
+      continue
     }
 
     if giveup {

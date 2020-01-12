@@ -15,7 +15,7 @@ type Game interface {
   CountStone(s stone.Stone) int
   ValidPoint(p point.Point) bool
   Puttable(p point.Point, s stone.Stone) bool
-  Gameset() bool
+  Gameset() (bool, stone.Stone) //winner
   Copy() Game
 }
 
