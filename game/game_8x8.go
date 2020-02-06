@@ -55,7 +55,7 @@ func (g *Game8x8) Puttable(p point.Point, s stone.Stone) bool {
 
 func (g *Game8x8) Gameset() (bool, stone.Stone) {
   bp := g.board.GetPuttablePoint(stone.Black)
-  wp := g.board.GetPuttablePoint(stone.Black)
+  wp := g.board.GetPuttablePoint(stone.White)
   if len(bp) == 0 && len(wp) == 0 {
     bc := g.board.CountStone(stone.Black)
     wc := g.board.CountStone(stone.White)
