@@ -52,10 +52,10 @@ func (c CUIController) Input(g game.Game) (p point.Point, pass, giveup bool) {
     fmt.Scanf("%s\n", &s)
 
     if s == "pass" {
-      return point.Point{X:-1, Y:-1}, true, false
+      return point.Unavailable, true, false
     }
     if s == "giveup" {
-      return point.Point{X:-1, Y:-1}, false, true
+      return point.Unavailable, false, true
     }
 
     p, err := format1AtoPoint(s);
@@ -123,7 +123,7 @@ func pointToFormat1A(p point.Point) (s, xs, ys string) {
 // Point{ X: 0, Y: 0 } => "1a"
 // Point{ X: 1, Y: 1 } => "2b"
 func format1AtoPoint(s string) (point.Point, error) {
-  p := point.Point{ X: -1, Y:-1 }
+  p := point.Unavailable
   if len(s) != 2 {
     return p, fmt.Errorf("unexpected format")
   }

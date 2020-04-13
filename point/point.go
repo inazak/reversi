@@ -23,6 +23,8 @@ const (
   Directions
 )
 
+var Unavailable = Point { X: -1, Y: -1 }
+
 func (p Point) String() string {
   return fmt.Sprintf("[%d,%d]", p.X, p.Y)
 }
