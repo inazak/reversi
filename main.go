@@ -11,7 +11,7 @@ func main() {
 
   game := game.NewGame6x6()
   ctrl := ui.NewCUIController()
-  plyb := player.NewHumanPlayer(ctrl)
+  plyb := player.NewHumanPlayer()
   plyw := player.NewRandomPlayer()
 
   session := session.NewSession(game, ctrl, plyb, plyw)

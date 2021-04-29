@@ -30,4 +30,7 @@ func (r RandomPlayer) Play(g game.Game) (p point.Point, pass, giveup bool) {
   return p, false, false
 }
 
+func (r RandomPlayer) UseUIInput() bool {
+  return false
+}
 

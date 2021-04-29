@@ -7,5 +7,6 @@ import (
 
 type Player interface {
   Play(g game.Game) (p point.Point, pass, giveup bool)
+  UseUIInput() bool
 }
 

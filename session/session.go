@@ -36,9 +36,17 @@ func (s Session) Start() {
     var pass, giveup bool
 
     if s.game.GetTurn() == stone.Black {
-      p, pass, giveup = s.plyb.Play(s.game.Copy())
+      if s.plyb.UseUIInput() {
+        p, pass, giveup = s.ctrl.Input(s.game.Copy())
+      } else {
+        p, pass, giveup = s.plyb.Play(s.game.Copy())
+      }
     } else {
-      p, pass, giveup = s.plyw.Play(s.game.Copy())
+      if s.plyw.UseUIInput() {
+        p, pass, giveup = s.ctrl.Input(s.game.Copy())
+      } else {
+        p, pass, giveup = s.plyw.Play(s.game.Copy())
+      }
     }
 
     if pass {
